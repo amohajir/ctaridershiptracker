@@ -23,7 +23,7 @@ def DataToDatabase(filename, dbname):
   conn.commit()
   conn.close()
 
-  # The database containing the data is 38.9 MB
+  # The database containing the data is 38.9 MB.
 
 # Part 2: Calculating the average number of rides, for all months, for the UIC-Halsted station
 
@@ -153,20 +153,16 @@ def busiest_station():
   conn.commit()
   conn.close()
 
-# OUTPUT
+  # OUTPUT
 
-# Busiest station in the CTA system
-# Busiest station:  Clark/Lake
-# Total ridership count:  94799999
+  # Busiest station in the CTA system
+  # Busiest station:  Clark/Lake
+  # Total ridership count:  94799999
 
 #DataToDatabase('CTA-Ridership-L-Station-Entries-Daily-Totals.csv', 'cta.db') # the table is only created once, so we don't have to re-execute this function
 print("\n*****")
 print("Average number of rides for all months at UIC-Halsted\n")
 avg_num_rides_months()
-print("\n*****")
-print("Average number of rides for all days of the week at UIC-Halsted\n")
-#getWeekday() # could not get to work
-#avg_num_rides_days() # could not get to work
 print("\n*****")
 print("Busiest station in the CTA system\n")
 busiest_station()
