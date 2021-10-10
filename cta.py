@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3
 
-# Problem 1
+# Part 1: Storing CTA data in a SQLite database called cta.db
 
 def DataToDatabase(filename, dbname):
   data = pd.read_csv("CTA-Ridership-L-Station-Entries-Daily-Totals.csv", names = ['station_id', 'stationname', 'date', 'daytype', 'rides'], skiprows = [0])
@@ -25,7 +25,7 @@ def DataToDatabase(filename, dbname):
 
   # The database containing the data is 38.9 MB
 
-# Problem 2
+# Part 2: Calculating the average number of rides, for all months, for the UIC-Halsted station
 
 def avg_num_rides_months():
   conn = sqlite3.connect("cta.db")
@@ -121,54 +121,24 @@ def avg_num_rides_months():
   conn.commit()
   conn.close()
 
-# OUTPUT
-
-# Average number of rides for all months at UIC-Halsted
-
-# January : 3907.7758913412563
-# February : 4955.733208955224
-# March : 4375.134125636672
-# April : 4863.619298245614
-# May : 2899.1358234295417
-# June : 2919.5263157894738
-# July : 2877.663701067616
-# August : 3518.5681003584227
-# September : 5675.288888888889
-# October : 5931.137992831541
-# November : 5104.498148148148
-# December : 2920.8888888888887
-
-# Problem 3
-
-def getWeekday(year, month, day):
-
-  import datetime
-  import calendar
-
-  date = datetime.date(year, month, day)
-  return calendar.day_name[date.weekday()]
-
-def avg_num_rides_days():
-  conn = sqlite3.connect("cta.db")
-  cur = conn.cursor()
-  sql = "SELECT date FROM daily_ridership_counts WHERE station_id = 40350"
-  columns = cur.execute(sql)
-  all_columns = columns.fetchall()
-
-  for i in all_columns():
-    pass
-    #spl = all_columns[i].split("/") # attempt to split the string by / so that we are left with month, date, and year not separated by /
-    #month = int(all_columns[0])
-    #day = int(all_columns[1])
-    #year = int(all_columns[2])
-
   # OUTPUT
 
-  # Average number of rides for all days of the week at UIC-Halsted
+  # Average number of rides for all months at UIC-Halsted
 
-  # I was unable to get the correct output for this part of the project
+  # January : 3907.7758913412563
+  # February : 4955.733208955224
+  # March : 4375.134125636672
+  # April : 4863.619298245614
+  # May : 2899.1358234295417
+  # June : 2919.5263157894738
+  # July : 2877.663701067616
+  # August : 3518.5681003584227
+  # September : 5675.288888888889
+  # October : 5931.137992831541
+  # November : 5104.498148148148
+  # December : 2920.8888888888887
 
-# Problem 4
+# Part 3: Finding the busiest station in the CTA system
 
 def busiest_station():
   conn = sqlite3.connect("cta.db")
